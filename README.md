@@ -10,7 +10,4 @@ We setup workdir to be /tf, and you can mount in terraform manifests.
 
 ## Building
 
-This repo is built automatically on every commit in Quay, but currently the builds fail because Quay doesn't use a new enough version of Docker that supports multi-stage builds.
-
-To build and deploy to Quay, run `deploy.sh`. This should be automated in CircleCI.
-
+This repo is built automatically by Quay on every commit that is pushed to the GitHub repository.
