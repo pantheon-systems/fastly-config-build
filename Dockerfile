@@ -1,4 +1,5 @@
-FROM golang:1.9
+FROM circleci/golang:1.10
+USER root
 
 ARG ngrok_zipfile=ngrok-stable-linux-amd64.zip
 
