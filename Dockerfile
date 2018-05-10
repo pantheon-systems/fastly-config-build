@@ -1,6 +1,9 @@
 FROM circleci/golang:1.10
 USER root
 
+# Declare that we are running in the fastly-config-build container
+ENV FASTLY_CONFIG_BUILD 1
+
 ARG ngrok_zipfile=ngrok-stable-linux-amd64.zip
 
 RUN apt-get update && apt-get install -y unzip dnsutils
