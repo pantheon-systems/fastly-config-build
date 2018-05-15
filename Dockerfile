@@ -15,8 +15,8 @@ RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
     apt-get update -y && apt-get install google-cloud-sdk -y
 
-# Install kubectl per https://kubernetes.io/docs/tasks/tools/install-kubectl/#download-as-part-of-the-google-cloud-sdk
-RUN gcloud components install kubectl
+# Install kubectl
+RUN apt-get install -y kubectl
 
 # TEMPORARY: include ngrok in our container
 RUN mkdir -p ~/.local
