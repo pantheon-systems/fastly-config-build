@@ -6,6 +6,16 @@ ENV FASTLY_CONFIG_BUILD 1
 
 ARG ngrok_zipfile=ngrok-stable-linux-amd64.zip
 
+# Install gcloud sdk per https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu
+RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
+    echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
+    apt-get update -y && apt-get install google-cloud-sdk -y
+
+# Install kubectl per https://kubernetes.io/docs/tasks/tools/install-kubectl/#download-as-part-of-the-google-cloud-sdk
+gcloud components install kubectl
+
+# Install unzip and dnsutils
 RUN apt-get update && apt-get install -y unzip dnsutils
 
 # TEMPORARY: include ngrok in our container
