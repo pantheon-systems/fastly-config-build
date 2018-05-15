@@ -13,7 +13,7 @@ RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
     apt-get update -y && apt-get install google-cloud-sdk -y
 
 # Install kubectl per https://kubernetes.io/docs/tasks/tools/install-kubectl/#download-as-part-of-the-google-cloud-sdk
-gcloud components install kubectl
+RUN gcloud components install kubectl
 
 # Install unzip and dnsutils
 RUN apt-get update && apt-get install -y unzip dnsutils
