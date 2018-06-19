@@ -28,6 +28,7 @@ EXPOSE 43220 4040
 # Install Terraform
 #RUN curl https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip -o "$HOME/terraform_0.11.7_linux_amd64.zip"
 #RUN unzip -o "$HOME/terraform_0.11.7_linux_amd64.zip" -d /bin/
+RUN mkdir /tfe-cli
 WORKDIR /tfe-cli
 RUN git clone https://github.com/hashicorp/tfe-cli.git .
 RUN cp /tfe-cli/bin/tfe /bin/
