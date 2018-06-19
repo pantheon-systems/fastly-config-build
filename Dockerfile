@@ -31,7 +31,6 @@ EXPOSE 43220 4040
 RUN mkdir /tfe-cli
 WORKDIR /tfe-cli
 RUN git clone https://github.com/hashicorp/tfe-cli.git .
-RUN cp /tfe-cli/bin/tfe /bin/
 
 # Install the Fastly Terraform provider
 WORKDIR /go/src/github.com/terraform-providers
