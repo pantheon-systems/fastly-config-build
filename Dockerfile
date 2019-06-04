@@ -4,8 +4,6 @@ USER root
 # Declare that we are running in the fastly-config-build container
 ENV FASTLY_CONFIG_BUILD 1
 
-ARG ngrok_zipfile=ngrok-stable-linux-amd64.zip
-
 # Install lsb-release, unzip and dnsutils
 RUN apt-get update && apt-get install -y lsb-release unzip dnsutils
 
@@ -17,11 +15,6 @@ RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
 
 # Install kubectl
 RUN apt-get install -y kubectl
-
-# TEMPORARY: include ngrok in our container
-RUN mkdir -p ~/.local
-RUN curl "https://bin.equinox.io/c/4VmDzA7iaHb/${ngrok_zipfile}" -o "$HOME/.local/${ngrok_zipfile}";
-RUN unzip -o "$HOME/.local/${ngrok_zipfile}" -d /usr/local/bin/
 
 EXPOSE 43220 4040
 
