@@ -1,4 +1,4 @@
-FROM circleci/golang:1.10
+FROM circleci/golang:1.12
 USER root
 
 # Declare that we are running in the fastly-config-build container
