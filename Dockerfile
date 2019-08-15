@@ -32,8 +32,5 @@ RUN CGO_ENABLED=0 go build -ldflags="-s -w" && cp /go/src/github.com/terraform-p
 WORKDIR /
 RUN rm -rf /go
 
-# Install our Terraform assets
-# ADD terraformrc /root/.terraformrc
-
 RUN mkdir /tf
 WORKDIR /tf
