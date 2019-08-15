@@ -19,21 +19,21 @@ RUN apt-get install -y kubectl
 EXPOSE 43220 4040
 
 # Install Terraform
-RUN curl https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip -o "$HOME/terraform_0.11.7_linux_amd64.zip"
-RUN unzip -o "$HOME/terraform_0.11.7_linux_amd64.zip" -d /bin/
+RUN curl https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip -o "$HOME/terraform_0.11.14_linux_amd64.zip"
+RUN unzip -o "$HOME/terraform_0.11.14_linux_amd64.zip" -d /bin/
 
 # Install the Fastly Terraform provider
 WORKDIR /go/src/github.com/terraform-providers
-RUN git clone --branch v0.8.0 https://github.com/terraform-providers/terraform-provider-fastly.git
+RUN git clone --branch v0.9.0 https://github.com/terraform-providers/terraform-provider-fastly.git
 
 WORKDIR /go/src/github.com/terraform-providers/terraform-provider-fastly
-RUN CGO_ENABLED=0 go build -ldflags="-s -w" && cp /go/src/github.com/terraform-providers/terraform-provider-fastly/terraform-provider-fastly /bin/terraform-provider-fastly
+RUN CGO_ENABLED=0 go build -ldflags="-s -w" && cp /go/src/github.com/terraform-providers/terraform-provider-fastly/terraform-provider-fastly /bin/terraform-provider-fastly_v0.9.0
 
 WORKDIR /
 RUN rm -rf /go
 
 # Install our Terraform assets
-ADD terraformrc /root/.terraformrc
+# ADD terraformrc /root/.terraformrc
 
 RUN mkdir /tf
 WORKDIR /tf
