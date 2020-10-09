@@ -1,4 +1,4 @@
-FROM circleci/golang:1.12
+FROM quay.io/getpantheon/go-build:latest
 USER root
 
 # Declare that we are running in the fastly-config-build container
