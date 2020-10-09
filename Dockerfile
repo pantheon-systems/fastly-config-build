@@ -1,4 +1,5 @@
-FROM quay.io/getpantheon/go-build:latest
+FROM cimg/go:1.15
+LABEL Description="Pantheon Fastly Build container"
 USER root
 
 # Declare that we are running in the fastly-config-build container
